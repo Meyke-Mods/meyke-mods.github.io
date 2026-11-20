@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MEYKE MODS - Minecraft Mod Merkezi</title>
+<meta name="description" content="Minecraft Java, Bedrock ve Mobil modları için MEYKE MODS.">
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;background:#0b0910;color:white;
+ font-family:Arial,sans-serif;
+}
+header{
+ padding:20px 7%;display:flex;
+ justify-content:space-between;align-items:center;
+ border-bottom:1px solid #30213e;
+}
+.logo{font-size:25px;font-weight:900;color:#b77aff}
+.logo span{color:white}
+nav a{color:#ddd;text-decoration:none;margin-left:15px}
+.hero{
+ text-align:center;padding:85px 20px 65px;
+ background:radial-gradient(ellipse at top,#382052,#0b0910 75%);
+}
+.hero h1{font-size:43px;margin:15px}
+.hero h1 span{color:#bd83ff}
+.hero p{color:#b9afc4;line-height:1.7}
+.search{
+ max-width:550px;margin:30px auto 0;
+ display:flex;background:#1b1524;
+ border:1px solid #7444a0;border-radius:12px;
+ overflow:hidden;
+}
+.search input{
+ flex:1;min-width:0;padding:17px;
+ background:transparent;border:0;color:white;
+ outline:none;font-size:15px;
+}
+.search button{
+ background:#914bd0;color:white;
+ border:0;padding:0 20px;font-weight:bold;
+}
+.container{max-width:1100px;margin:auto;padding:35px 20px}
+h2{font-size:25px}
+.categories{display:flex;gap:10px;flex-wrap:wrap;margin:25px 0}
+.categories button{
+ background:#1c1627;color:#ddd;
+ border:1px solid #49325f;
+ padding:12px 18px;border-radius:9px;
+}
+.categories button.active,.categories button:hover{
+ background:#8745c5;color:white;
+}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{
+ background:#17121f;border:1px solid #30213e;
+ border-radius:14px;padding:22px;
+ transition:.2s;
+}
+.card:hover{transform:translateY(-4px);border-color:#a66be5}
+.symbol{font-size:32px}
+.card h3{margin-bottom:8px}
+.card p{color:#b9afc4;font-size:14px;line-height:1.6}
+.tag{
+ display:inline-block;background:#342044;color:#d9b8ff;
+ padding:6px 10px;border-radius:6px;font-size:12px;
+}
+.link{
+ display:inline-block;margin-top:15px;
+ background:#8241bb;color:white;text-decoration:none;
+ padding:11px 15px;border-radius:8px;font-size:13px;
+}
+.sources{display:flex;gap:15px;flex-wrap:wrap}
+.sources a{
+ color:white;background:#21172d;
+ border:1px solid #68428a;padding:15px 20px;
+ border-radius:10px;text-decoration:none;
+}
+footer{
+ text-align:center;padding:35px;color:#8d8298;
+ border-top:1px solid #30213e;margin-top:40px;font-size:13px;
+}
+@media(max-width:700px){
+ header{padding:18px 5%}
+ nav a{margin-left:8px;font-size:12px}
+ .hero h1{font-size:32px}
+ .grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="logo">MEYKE <span>MODS</span></div>
+ <nav>
+  <a href="#kategoriler">Kategoriler</a>
+  <a href="#kaynaklar">Kaynaklar</a>
+ </nav>
+</header>
+
+<section class="hero">
+ <div class="tag">MINECRAFT MOD MERKEZİ</div>
+ <h1>OYUNUNU <span>GELİŞTİR!</span></h1>
+ <p>Minecraft için modlar, shaderlar ve daha fazlası.<br>
+ Java, Bedrock ve Mobil oyuncularına özel!</p>
+ <div class="search">
+  <input id="search" placeholder="Mod veya kategori ara...">
+  <button onclick="filterCards()">ARA</button>
+ </div>
+</section>
+
+<main class="container">
+ <section id="kategoriler">
+  <h2>Keşfet</h2>
+  <div class="categories">
+   <button class="active" onclick="setCategory('all',this)">Tümü</button>
+   <button onclick="setCategory('Java',this)">Java</button>
+   <button onclick="setCategory('Bedrock',this)">Bedrock</button>
+   <button onclick="setCategory('Mobil',this)">Mobil</button>
+   <button onclick="setCategory('FPS',this)">FPS</button>
+   <button onclick="setCategory('Shader',this)">Shader</button>
+  </div>
+ </section>
+
+ <div class="grid" id="cards">
+
+  <article class="card" data-category="Java FPS">
+   <div class="symbol">⚡</div>
+   <h3>FPS Modları</h3>
+   <span class="tag">Java</span>
+   <p>Minecraft performansını geliştirmeye yardımcı modlar.</p>
+   <a class="link" href="https://modrinth.com/mods?categories=optimization">Modları keşfet ↗</a>
+  </article>
+
+  <article class="card" data-category="Java">
+   <div class="symbol">🧩</div>
+   <h3>Java Modları</h3>
+   <span class="tag">Java Edition</span>
+   <p>Java için yeni özellikler ve maceralar.</p>
+   <a class="link" href="https://modrinth.com/mods">Modları keşfet ↗</a>
+  </article>
+
+  <article class="card" data-category="Bedrock">
+   <div class="symbol">🟩</div>
+   <h3>Bedrock Modları</h3>
+   <span class="tag">Bedrock</span>
+   <p>Bedrock dünyan için eklentiler ve içerikler.</p>
+   <a class="link" href="https://www.curseforge.com/minecraft-bedrock">Keşfet ↗</a>
+  </article>
+
+  <article class="card" data-category="Mobil FPS">
+   <div class="symbol">📱</div>
+   <h3>Mobil FPS</h3>
+   <span class="tag">Mobil</span>
+   <p>Mobil Minecraft için performans kaynakları.</p>
+   <a class="link" href="https://modrinth.com/mods">Kaynakları keşfet ↗</a>
+  </article>
+
+  <article class="card" data-category="Shader">
+   <div class="symbol">🌌</div>
+   <h3>Shaderlar</h3>
+   <span class="tag">Görsellik</span>
+   <p>Minecraft dünyana farklı görsel atmosferler kat.</p>
+   <a class="link" href="https://modrinth.com/shaders">Shaderları keşfet ↗</a>
+  </article>
+
+  <article class="card" data-category="Bedrock Mobil">
+   <div class="symbol">🎨</div>
+   <h3>Texture Packler</h3>
+   <span class="tag">Kaynak paketleri</span>
+   <p>Blokları ve eşyaların görünümünü değiştir.</p>
+   <a class="link" href="https://mcpedl.com/">Paketleri keşfet ↗</a>
+  </article>
+
+ </div>
+
+ <section id="kaynaklar" style="margin-top:55px">
+  <h2>Mod Kaynakları</h2>
+  <p style="color:#aaa">Minecraft içeriklerini keşfet.</p>
+  <div class="sources">
+   <a href="https://modrinth.com/">Modrinth ↗</a>
+   <a href="https://www.curseforge.com/minecraft">CurseForge ↗</a>
+   <a href="https://mcpedl.com/">MCPEDL ↗</a>
+  </div>
+ </section>
+</main>
+
+<footer>
+ <div class="logo">MEYKE MODS</div>
+ <p>Minecraft topluluğu için, Minecraft topluluğundan.</p>
+ <p>© 2026 MEYKE MODS</p>
+</footer>
+
+<script>
+let selected='all';
+
+function setCategory(category,button){
+ selected=category;
+ document.querySelectorAll('.categories button')
+ .forEach(b=>b.classList.remove('active'));
+ button.classList.add('active');
+ filterCards();
+}
+
+function filterCards(){
+ const query=document.getElementById('search').value.toLowerCase();
+ document.querySelectorAll('.card').forEach(card=>{
+  const matchesCategory=selected==='all' ||
+   card.dataset.category.split(' ').includes(selected);
+  const matchesSearch=card.innerText.toLowerCase().includes(query);
+  card.style.display=matchesCategory && matchesSearch?'block':'none';
+ });
+}
+
+document.getElementById('search').addEventListener('input',filterCards);
+</script>
+
+</body>
+</html>
